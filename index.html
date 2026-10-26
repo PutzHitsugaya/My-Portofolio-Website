@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>THE VISIONARY — Personal Portfolio</title>
+<meta name="description" content="Personal portfolio of Arka Putra Maulana — web development, networking, and creative coding.">
+<meta name="theme-color" content="#060304">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/PlusJakartaSans-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<div id="city" aria-hidden="true"></div>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div id="fx" aria-hidden="true"></div>
+<div id="mt" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#home" aria-label="THE VISIONARY"><span class="logo-tag">&lt;/&gt;</span> THE VISIONARY</a>
+  <ul id="menu">
+    <li><a href="#home" data-i18n="nav.home">Home</a></li>
+    <li><a href="#about" data-i18n="nav.about">About</a></li>
+    <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+    <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" class="on" aria-pressed="true">EN</button>
+      <button type="button" data-lang="id" aria-pressed="false">ID</button>
+    </div>
+    <button id="burger" class="burger" type="button" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-main">
+      <h1 class="hero-title"><span>THE</span> <span>VISIONARY</span></h1>
+      <p class="hero-code">
+        <span class="kw">const</span> VISIONARY = { <span class="key">character</span>: <span class="str">Gremmy Thoumeaux</span>,
+        <span class="key">schrift</span>: <span class="str">V — The Visionary</span>,
+        <span class="key">power</span>: <span class="str" data-i18n="code.power"></span>,
+        <span class="key">abilities</span>: [ <span class="str" data-i18n="code.a1"></span>, <span class="str" data-i18n="code.a2"></span>, <span class="str" data-i18n="code.a3"></span> ],
+        <span class="key">limit</span>: <span class="str" data-i18n="code.limit"></span> }
+      </p>
+    </div>
+    <div class="statusbar">
+      <div><span class="dot" aria-hidden="true"></span><span data-i18n="status.open">Open to collaboration</span></div>
+      <div data-i18n="status.based">Based in Tulungagung, ID</div>
+      <div><span data-i18n="status.today">Today:</span>&nbsp;<span id="today"></span></div>
+      <button type="button" id="scrollDown" class="status-btn"><span data-i18n="status.scroll">Scroll down</span><span aria-hidden="true">↓</span></button>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="sec">
+    <div class="wrap">
+      <h2 class="big-h"><span data-i18n="about.t1">About</span> <span class="red" data-i18n="about.t2">me</span></h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="wave" aria-hidden="true">👋</div>
+          <p class="hi" data-i18n="about.hi">Hi, I'm</p>
+          <h3 class="about-name">ARKA PUTRA MAULANA.</h3>
+          <p class="about-p" data-i18n="about.p1"></p>
+          <p class="about-p" data-i18n="about.p2"></p>
+          <a class="btn-white" href="#contact" data-i18n="about.cta">Contact me</a>
+        </div>
+        <div class="photo" id="photo" tabindex="0" role="img" aria-label="Arka Putra Maulana — hover or tap to switch photo">
+          <div class="photo-win">
+            <img class="img-a" src="assets/img/profile.jpg" alt="Photo of Arka Putra Maulana" width="900" height="1200" loading="lazy">
+            <img class="img-b" src="assets/img/profile-hover.jpg" alt="" width="657" height="877" loading="lazy">
+            <div class="photo-tag">
+              <strong>@arkafxtrad_</strong>
+              <span class="online"><span class="dot" aria-hidden="true"></span>ONLINE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="sec">
+    <div class="wrap">
+      <div class="rv"><h2 class="sec-h" data-i18n="skills.h">Thought → Reality</h2><p class="sub" data-i18n="skills.sub"></p></div>
+      <div class="grid" id="skillGrid"></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="sec">
+    <div class="wrap">
+      <div class="rv"><h2 class="sec-h" data-i18n="projects.h">Imagined worlds</h2><p class="sub" data-i18n="projects.sub"></p></div>
+      <div class="grid" id="projectGrid"></div>
+    </div>
+  </section>
+
+  <!-- VISIONARY -->
+  <section id="vis" class="sec vis">
+    <svg class="sigil" viewBox="-110 -110 220 220" role="img" aria-label="Schrift V">
+      <circle r="100" fill="none" stroke="#ff4a4a" stroke-opacity=".25"/>
+      <g class="spin"><circle r="88" fill="none" stroke="#6ccfff" stroke-width="1" stroke-dasharray="2 8"/></g>
+      <circle r="72" fill="none" stroke="#ff4a4a" stroke-width="1.5"/>
+      <path d="M-104 0H104M0-104V104" stroke="#ff4a4a" stroke-width="1" opacity=".5"/>
+      <g fill="#6ccfff"><circle cy="-104" r="3"/><circle cy="104" r="3"/><circle cx="-104" r="3"/><circle cx="104" r="3"/></g>
+      <circle r="52" fill="#060304" opacity=".8"/>
+      <g fill="#f6efee"><polygon points="-38,-40 -12,-40 0,10 12,-40 38,-40 10,44 -10,44"/><rect x="-48" y="-45" width="42" height="5"/><rect x="6" y="-45" width="42" height="5"/></g>
+    </svg>
+    <h2 class="vis-h rv">THE VISIONARY</h2>
+    <p class="vis-q rv" data-i18n="vis.q"></p>
+    <p class="sub rv" data-i18n="vis.sub"></p>
+  </section>
+
+  <!-- MATERIALIZE -->
+  <section id="mat" class="sec mat">
+    <div class="wrap">
+      <h2 class="sec-h rv" data-i18n="mat.h">What will you imagine?</h2>
+      <div id="min" class="mat-in">
+        <input id="idea" type="text" maxlength="60" data-i18n-ph="mat.ph" aria-label="Your idea" autocomplete="off">
+        <button class="btn" id="mb" type="button" data-i18n="mat.btn">Materialize</button>
+      </div>
+      <div id="mout" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="sec">
+    <div class="wrap contact-wrap">
+      <div class="rv"><h2 class="sec-h" data-i18n="contact.h">Make it real</h2><p class="sub" data-i18n="contact.sub"></p></div>
+      <form class="form rv" id="contactForm" novalidate>
+        <label for="cn" data-i18n="contact.name">Name</label>
+        <input id="cn" name="name" maxlength="80" autocomplete="name" required>
+        <label for="ce" data-i18n="contact.email">Email</label>
+        <input id="ce" name="email" type="email" maxlength="120" autocomplete="email" required>
+        <label for="cm" data-i18n="contact.msg">Message</label>
+        <textarea id="cm" name="message" rows="5" maxlength="2000" required></textarea>
+        <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div id="recaptcha" class="recaptcha"></div>
+        <button class="btn" id="sendBtn" type="submit" data-i18n="contact.send">Send message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <a class="logo" href="#home"><span class="logo-tag">&lt;/&gt;</span> THE VISIONARY</a>
+  <p data-i18n="foot.tag">“Imagine. Create. Materialize.”</p>
+  <div class="soc">
+    <a href="#" target="_blank" rel="noopener noreferrer">GITHUB</a>
+    <a href="https://instagram.com/arkafxtrad_" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+    <a href="#contact">EMAIL</a>
+  </div>
+  <p>© <span id="year">2026</span> Arka Putra Maulana</p>
+  <button id="met" type="button" aria-label="Meteor">METEOR<span data-i18n="foot.warn">Don’t click.</span></button>
+</footer>
+
+<script src="js/config.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/background.js" defer></script>
+<script src="js/ui.js" defer></script>
+<script src="js/effects.js" defer></script>
+<script src="js/contact.js" defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=explicit&onload=onRecaptchaLoad" async defer></script>
+</body>
+</html>

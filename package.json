@@ -1,0 +1,8 @@
+{
+  "name": "the-visionary-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "THE VISIONARY — personal portfolio (static site + Vercel serverless contact form)",
+  "engines": { "node": ">=18" },
+  "dependencies": { "nodemailer": "^6.9.16" }
+}
