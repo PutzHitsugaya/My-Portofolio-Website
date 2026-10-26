@@ -2,6 +2,7 @@
 (function () {
   const cv = document.getElementById("bg"), cx = cv.getContext("2d");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const PAL = ["255,42,77", "252,238,10", "255,43,214", "47,123,255", "141,255,155", "255,122,184"];
   let W, H, nodes = [], burst = [], speed = 1, visible = true;
 
   function size() {
@@ -13,7 +14,8 @@
     nodes = Array.from({ length: n }, () => ({
       x: Math.random() * W, y: Math.random() * H,
       vx: (Math.random() - .5) * .22, vy: (Math.random() - .5) * .22,
-      r: Math.random() * 1.4 + .6
+      r: Math.random() * 1.4 + .6,
+      c: PAL[Math.floor(Math.random() * PAL.length)]
     }));
     if (reduce) frame();
   }
@@ -30,17 +32,17 @@
       cx.lineWidth = 1;
       for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
         const a = nodes[i], b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
-        if (d < maxD) { cx.strokeStyle = `rgba(255,74,74,${(1 - d / maxD) * .35})`; cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y); cx.stroke(); }
+        if (d < maxD) { cx.strokeStyle = `rgba(${a.c},${(1 - d / maxD) * .4})`; cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y); cx.stroke(); }
       }
     }
-    cx.fillStyle = "rgba(255,90,90,.85)";
     for (const p of nodes) {
+      cx.fillStyle = `rgba(${p.c},.9)`;
       if (warp) cx.fillRect(p.x, p.y, p.r, p.r * speed * 2); else { cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 6.3); cx.fill(); }
     }
     for (let i = burst.length - 1; i >= 0; i--) {
       const b = burst[i];
       b.x += (b.tx - b.x) * .07; b.y += (b.ty - b.y) * .07; b.l--;
-      cx.fillStyle = `rgba(255,120,120,${Math.min(1, b.l / 30)})`;
+      cx.fillStyle = `rgba(${i % 2 ? "252,238,10" : "255,43,214"},${Math.min(1, b.l / 30)})`;
       cx.fillRect(b.x, b.y, 2.5, 2.5);
       if (b.l <= 0) burst.splice(i, 1);
     }
